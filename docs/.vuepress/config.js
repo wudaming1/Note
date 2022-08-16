@@ -16,11 +16,23 @@ module.exports = {
       {
         title: 'Android',   // 必要的
         path: '/Android/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
-        collapsable: false, // 可选的, 默认值是 true,
         sidebarDepth: 2,    // 可选的, 默认值是 1
         children: [
           '/Android/decompile.md',
           '/Android/directory.md'
+        ]
+      },
+      {
+        title: 'Git',   // 必要的
+        path: '/Git/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+        sidebarDepth: 2,    // 可选的, 默认值是 1
+        children: [
+          '/Git/GitHub/create.md',
+          '/Git/base.md',
+          '/Git/core.md',
+          '/Git/commit.md',
+          '/Git/stash.md',
+          '/Git/others.md'
         ]
       },
     ]
