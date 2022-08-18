@@ -18,6 +18,36 @@ module.exports = {
         ]
       },
       {
+        title: 'Flutter',   // 必要的
+        path: '/Flutter/',  
+        children: [
+          '/Flutter/async.md',
+          '/Flutter/build.md',
+          '/Flutter/layout.md',
+          '/Flutter/provider.md',
+          {
+            title: 'build',   // 必要的
+            children: [
+              '/Flutter/build/library_builder.md',
+            ]
+          }, 
+          {
+            title: 'widgets',   // 必要的
+            children: [
+              '/Flutter/widgets/InheritedWidget/InheritedWidget.md',
+            ]
+          },{
+            title: 'navigator',   // 必要的
+            children: [
+              '/Flutter/navigator/关键函数.md',
+              '/Flutter/navigator/一次路由跳转的流程.md',
+              '/Flutter/navigator/navigator.md',
+              '/Flutter/navigator/route如何关联到widget页面.md',
+            ]
+          },
+        ]
+      },
+      {
         title: 'Java',   // 必要的
         path: '/Java/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
         collapsable: true, // 可选的, 默认值是 true,
@@ -27,6 +57,8 @@ module.exports = {
           '/Java/lock.md',
           '/Java/gc.md',
           '/Java/io.md',
+          '/Java/okio.md',
+          '/Java/nio.md',
           '/Java/history.md',
           '/Java/keytool.md',
           '/Java/innerClass.md',
