@@ -51,6 +51,58 @@ module.exports = {
           '/Git/others.md'
         ]
       },
+      {
+        title: 'Mac',   // 必要的
+        children: [
+          '/Mac/bash_profile.md',
+        ]
+      },
+      {
+        title: 'Web',   // 必要的
+        children: [
+          '/Web/npm.md',
+          '/Web/eslint.md',
+          {
+            title: 'Vue',   // 必要的
+            children: [
+              '/Web/Vue/_init.md',
+              '/Web/Vue/createElement.md',
+              '/Web/Vue/Vue_class.md',
+              '/Web/Vue/Vue_object.md',
+              '/Web/Vue/Router/introduce.md',
+              '/Web/Vue/Router/register.md',
+              '/Web/Vue/Router/router.md',
+            ]
+          },
+          {
+            title: 'Node',   // 必要的
+            children: [
+              '/Web/Node/nvm.md',
+            ]
+          }, {
+            title: 'JavaScript',   // 必要的
+            children: [
+              '/Web/JavaScript/原型链.md',
+              '/Web/JavaScript/作用域.md',
+              '/Web/JavaScript/closure.md',
+              '/Web/JavaScript/curry.md',
+              '/Web/JavaScript/Promise.md',
+              '/Web/JavaScript/promise译文.md',
+            ]
+          },
+          {
+            title: 'CSS',   // 必要的
+            children: [
+              '/Web/CSS/block.md',
+              '/Web/CSS/Cascading.md',
+              '/Web/CSS/core.md',
+              '/Web/CSS/flex.md',
+              '/Web/CSS/grid.md',
+              '/Web/CSS/inline.md',
+            ]
+          },
+        ]
+      },
     ]
   }
 }
