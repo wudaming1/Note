@@ -12,12 +12,14 @@ module.exports = {
           '/Java/reference_type.md',
           '/Java/lock.md',
           '/Java/gc.md',
+          '/Java/io.md',
           '/Java/history.md',
           '/Java/keytool.md',
           '/Java/innerClass.md',
           '/Java/VM/bytecode.md',
           '/Java/VM/ClassInit.md',
           '/Java/VM/ClassLoader.md',
+
           {
             title: 'JDK5',
             children: [
@@ -34,6 +36,7 @@ module.exports = {
         path: '/Android/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
         sidebarDepth: 2,    // 可选的, 默认值是 1
         children: [
+          '/Android/color.md',
           '/Android/decompile.md',
           '/Android/directory.md'
         ]
