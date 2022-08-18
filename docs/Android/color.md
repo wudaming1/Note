@@ -2,8 +2,6 @@
 自己把页面背景改成纯黑看！！！
 
 
-
-
 <font color=#ffffff size=4 >#ffffff : 白色-white</font>
 
 <font color=#fffff0 size=4 >#fffff0 : 象牙色-ivory</font>
