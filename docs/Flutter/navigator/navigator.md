@@ -7,7 +7,6 @@ Navigator是Flutter库内置的导航控件，目前是2.0版本，支持page入
 * RouterDelegate：根据app的状态和RouteInformationParser动态生成Navigator组件。
 * BackButtonDispatcher：返回按钮点击回调。
 
-![RouterDelegate](./router_delegate.png)
 
 ## 导航---Navigator
 导航管理Router实例对象。

@@ -19,7 +19,7 @@ Theme使用_InheritedTheme来完成它的状态共享，_InheritedTheme是Inheri
 ### 如何在Element树中存储需要共享的数据
 Flutter框架在InheritedElement挂载时将数据关联起来，以首次mount为例：
 
-![](./第一次如何保存数据.png)
+![](/第一次如何保存数据.png)
 
 关键方法：_updateInheritance有两个实现，一个在Element，一个在InheritedElement。
 
@@ -102,7 +102,7 @@ abstract class InheritedWidget extends ProxyWidget {
 ### 数据改变如何通知更新
 我们知道，所有的Widget都是`@immutable`。那么改变InheritedWidget的一种方式是父Widget标dirty，用新的数据从新生成InheritedWidget。
 
-![](./InheritedWidget数据变更.png)
+![](/InheritedWidget数据变更.png)
 
 最后一个流程：InheritedElement.notifyClients()源码如下，又回到_dependencies找到元素，并标记dirty。
 

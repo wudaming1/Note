@@ -1,5 +1,7 @@
+---
+pageClass: custom-content-class
+---
 # 文字颜色表
-自己把页面背景改成纯黑看！！！
 
 
 <font color=#ffffff size=4 >#ffffff : 白色-white</font>
