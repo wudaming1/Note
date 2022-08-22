@@ -15,13 +15,13 @@ module.exports = {
           '/Dart/extension.md',
           '/Dart/generator.md',
           '/Dart/mixins.md',
+          '/Dart/async.md',
         ]
       },
       {
         title: 'Flutter',   // 必要的
         path: '/Flutter/',  
         children: [
-          '/Flutter/async.md',
           '/Flutter/build.md',
           '/Flutter/layout.md',
           '/Flutter/provider.md',
@@ -42,7 +42,7 @@ module.exports = {
               '/Flutter/navigator/关键函数.md',
               '/Flutter/navigator/一次路由跳转的流程.md',
               '/Flutter/navigator/navigator.md',
-              '/Flutter/navigator/route如何关联到widget页面.md',
+              '/Flutter/navigator/route.md',
             ]
           },
         ]
