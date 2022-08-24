@@ -15,3 +15,9 @@ OverlayEntry并不是Widget，但是他内部可以构建一个widget。Route可
 1. maintainState(bool): 当页面完全不可见时，当前OverlayEntry对应的Widget是否仍然被插入Widget树中，默认false。设置为true会有较大开销。
 2. opaque(bool): 当前OverlayEntry是否会遮盖整个Overlay。
 
+
+### RouteSettings
+route的数据
+
+1. name：路由名称，如"/settings"。
+2. arguments：路由的参数

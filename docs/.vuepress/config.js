@@ -40,7 +40,7 @@ module.exports = {
             title: 'navigator',   // 必要的
             children: [
               '/Flutter/navigator/关键函数.md',
-              '/Flutter/navigator/一次路由跳转的流程.md',
+              '/Flutter/navigator/initialize.md',
               '/Flutter/navigator/navigator.md',
               '/Flutter/navigator/route.md',
             ]
