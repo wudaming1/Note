@@ -1,2 +1,2 @@
 # 介绍
-Navigator时Flutter用过管理页面的Widget。
+Navigator是Flutter用于管理页面的Widget。
