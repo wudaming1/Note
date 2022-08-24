@@ -22,11 +22,12 @@ module.exports = {
         title: 'Flutter',   // 必要的
         path: '/Flutter/',  
         children: [
-          '/Flutter/build.md',
           '/Flutter/layout.md',
           '/Flutter/provider.md',
+          '/Flutter/sliver.md',
           {
             title: 'build',   // 必要的
+            path: '/Flutter/build', 
             children: [
               '/Flutter/build/library_builder.md',
             ]
@@ -38,6 +39,7 @@ module.exports = {
             ]
           },{
             title: 'navigator',   // 必要的
+            path: '/Flutter/navigator',
             children: [
               '/Flutter/navigator/关键函数.md',
               '/Flutter/navigator/initialize.md',
