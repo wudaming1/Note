@@ -35,6 +35,10 @@ class NavigatorState {
     /// 路由栈
     List<_RouteEntry> _history = <_RouteEntry>[];
 
+    ///overlay 相关
+    late GlobalKey<OverlayState> _overlayKey;
+    OverlayState? get overlay => _overlayKey.currentState;
+    Iterable<OverlayEntry> get _allRouteOverlayEntries
 }
 
 ```
