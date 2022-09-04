@@ -8,7 +8,7 @@ module.exports = {
         children: [
           '/机器学习/书单及顺序.md',
         ]
-      }, 
+      },
       {
         title: 'Dart',   // 必要的
         children: [
@@ -20,31 +20,38 @@ module.exports = {
       },
       {
         title: 'Flutter',   // 必要的
-        path: '/Flutter/',  
+        path: '/Flutter/',
         children: [
           '/Flutter/layout.md',
           '/Flutter/provider.md',
           '/Flutter/sliver.md',
           {
             title: 'build',   // 必要的
-            path: '/Flutter/build', 
+            path: '/Flutter/build',
             children: [
               '/Flutter/build/library_builder.md',
             ]
-          }, 
+          },
           {
             title: 'widgets',   // 必要的
             children: [
               '/Flutter/widgets/InheritedWidget/InheritedWidget.md',
             ]
-          },{
+          }, 
+          {
             title: 'navigator',   // 必要的
             path: '/Flutter/navigator',
             children: [
               '/Flutter/navigator/关键函数.md',
               '/Flutter/navigator/initialize.md',
               '/Flutter/navigator/navigator.md',
-              '/Flutter/navigator/route.md',
+              {
+                title: 'route',   // 必要的
+                path: '/Flutter/navigator/route',
+                children: [
+                  '/Flutter/navigator/route/hierarchy.md',
+                ]
+              },
             ]
           },
         ]
