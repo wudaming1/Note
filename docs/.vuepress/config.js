@@ -51,6 +51,7 @@ module.exports = {
                 path: '/Flutter/navigator/route',
                 children: [
                   '/Flutter/navigator/route/hierarchy.md',
+                  '/Flutter/navigator/route/widgets.md',
                 ]
               },
             ]

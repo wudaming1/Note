@@ -50,8 +50,15 @@ Future<T?> get popped => _popCompleter.future;
 ### OverlayEntry
 OverlayEntry并不是Widget，但是他内部可以构建一个widget。Route可以生成多个OverlayEntry以提供给Navigator来填充到Overlay。
 
-1. maintainState(bool): 当页面完全不可见时，当前OverlayEntry对应的Widget是否仍然被插入Widget树中，默认false。设置为true会有较大开销。
-2. opaque(bool): 当前OverlayEntry是否会遮盖整个Overlay。
+```dart
+class OverlayEntry extends ChangeNotifier {
+    final WidgetBuilder builder;
+    ///当前OverlayEntry是否会遮盖整个Overlay。
+    bool get opaque => _opaque;
+    ///当页面完全不可见时，当前OverlayEntry对应的Widget是否仍然被插入Widget树中，默认false。设置为true会有较大开销。
+    bool get maintainState => _maintainState;
+}
+```
 
 
 ### RouteSettings
