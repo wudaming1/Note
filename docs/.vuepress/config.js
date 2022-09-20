@@ -42,7 +42,6 @@ module.exports = {
             title: 'navigator',   // 必要的
             path: '/Flutter/navigator',
             children: [
-              '/Flutter/navigator/关键函数.md',
               '/Flutter/navigator/initialize.md',
               '/Flutter/navigator/navigator.md',
               {
