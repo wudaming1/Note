@@ -39,6 +39,24 @@ class NavigatorState {
     late GlobalKey<OverlayState> _overlayKey;
     OverlayState? get overlay => _overlayKey.currentState;
     Iterable<OverlayEntry> get _allRouteOverlayEntries
+
+    /// 命名路由匹配, Navigator与命名路由相关的入栈操作，都是使用这个方法来匹配到Route.
+    /// 如：Navigator.of(context).pushNamed("/detail");
+    /// 1. widget.onGenerateRoute!(settings)
+    /// 2. widget.onUnknownRoute!(settings)
+    Route<T>? _routeNamed<T>(String name, { required Object? arguments, bool allowNull = false }) {
+        if (allowNull && widget.onGenerateRoute == null)
+        return null;
+        final RouteSettings settings = RouteSettings(
+        name: name,
+        arguments: arguments,
+        );
+        Route<T>? route = widget.onGenerateRoute!(settings) as Route<T>?;
+        if (route == null && !allowNull) {
+        route = widget.onUnknownRoute!(settings) as Route<T>?;
+        }
+        return route;
+    }
 }
 
 ```

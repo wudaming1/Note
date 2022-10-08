@@ -44,11 +44,13 @@ module.exports = {
             children: [
               '/Flutter/navigator/initialize.md',
               '/Flutter/navigator/navigator.md',
+              '/Flutter/navigator/push.md',
               {
                 title: 'route',   // 必要的
                 path: '/Flutter/navigator/route',
                 children: [
                   '/Flutter/navigator/route/hierarchy.md',
+                  '/Flutter/navigator/route/widgets.md',
                 ]
               },
             ]
