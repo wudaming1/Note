@@ -101,6 +101,12 @@ module.exports = {
         sidebarDepth: 2,    // 可选的, 默认值是 1
         children: [
           '/Git/GitHub/create.md',
+          {
+            title: 'GitLab',   // 必要的
+            children: [
+              '/Git/GitLab/cicd.md',
+            ]
+          },
           '/Git/base.md',
           '/Git/core.md',
           '/Git/commit.md',
