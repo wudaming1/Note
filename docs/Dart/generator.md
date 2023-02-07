@@ -1,4 +1,4 @@
-# generator
+# Generator
 生成器是是用于产生集合值的函数，同步生成器为迭代对象（Iterable）生成提供语法糖；异步生成器为流（Stream）生成提供语法糖。
 
 
