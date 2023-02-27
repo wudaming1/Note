@@ -76,8 +76,27 @@ scripts:
     script: flutter build ios
 ```
 
-##### 设置Android和iOS build 配置。
-参考 https://docs.codemagic.io/yaml-quick-start/building-a-flutter-app/
+ Android和iOS build 配置参考 https://docs.codemagic.io/yaml-quick-start/building-a-flutter-app/
+
+### 版本号自增
+CodeMagic提供了Android和iOS的CLI来帮助我们通过命令行来与googlePlay 和Apple Store交互。项目地址： https://github.com/codemagic-ci-cd/cli-tools
+
+----
+googlePlay
+
+1. 下载google play api access credentials，按文档添加到环境变量： https://docs.codemagic.io/knowledge-codemagic/build-versioning/
+2. 使用这个命令获取版本号`google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks="$GOOGLE_PLAY_TRACK"`，需要引用`GCLOUD_SERVICE_ACCOUNT_CREDENTIALS`所在的环境变量组到variables下。这个可以获取到GOOGLE_PLAY_TRACK下面最新包的版本号。
+
+----
+app-store
+
+1. 在Teams中，将Integrations下面的Developer Portal项配置好，https://docs.codemagic.io/flutter-code-signing/ios-code-signing/#step-1-creating-an-app-store-api-key-for-codemagic。
+2. 使用`app-store-connect get-latest-testflight-build-number "$APP_ID"`获取testflight中最新包的build number。APP_ID是项目在Testflight中的ID。
+
+----
+Flutter 
+
+在Flutter的build命令中使用 `--build-number=$BUILD_NUMBER`来覆写yaml文件的的版本号，这样可以灵活配置。
 
 ### 使用build api
 官方文档： https://docs.codemagic.io/rest-api/builds/
@@ -154,7 +173,7 @@ variables:
   ADDITIONAL_ARG: --no-sound-null-safety
   XCODE_SCHEME: qa
   ANDROID_SCHEME: qa
-  BUNDLE_ID: com.carsome.customer.test
+  BUNDLE_ID: com.carsome.demo
   ENTRY_POINT: lib/main_dev.dart
   WORKFLOW_ID: build_app
   IMAGE: cirrusci/flutter:3.3.7
