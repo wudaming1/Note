@@ -8,10 +8,14 @@
 
 
 ## CD（基于CodeMagic）
-首先需要注册CodeMagic账号，并关联到对应的项目，https://docs.codemagic.io/getting-started/signup。
+首先需要注册CodeMagic账号，并关联到对应的项目，https://docs.codemagic.io/getting-started/signup。CodeMagic有两种工作流程定义方式：
+1. 基于图形界面`Workflow Editor`，使用起来简单。
+2. 基于`.yaml`文件，需要理解的概念比较多，但是流程控制更灵活，而且可以使用Build Api来触发。
+
+基于`.yaml`文件的CodeMagic流程控制需要在项目的根目录创建codemagic.yaml。
 
 ### codemagic.yaml
-CodeMagic 可以使用codemagic.yaml文件来定义要执行的任务。codemagic.yaml文件必须有一个`workflows`顶级元素。一个`workflows`可以包括很多workflow。官方有一个完整的介绍 https://docs.codemagic.io/yaml-basic-configuration/yaml-getting-started/ 。
+使用codemagic.yaml文件来定义要执行的任务。codemagic.yaml文件必须有一个`workflows`顶级元素。一个`workflows`可以包括很多workflow。官方有一个完整的介绍 https://docs.codemagic.io/yaml-basic-configuration/yaml-getting-started/ 。
 
 ```yaml
 workflows:
@@ -52,10 +56,12 @@ workflows:
 
 在使用build api时。environment中vars和groups部分都可以被覆写。参考https://docs.codemagic.io/rest-api/builds/文档
 vars部分是直接定义的变量，groups部分定义变量，而是表示引入一组变量。
+
 ![codeMagic env](codeMagic_envs.png)
 打开项目设置，选择`Environment variables`tab标签，在这里设置`Application environment variables`.
 
 点击下方`team settings`即可进入team公用环境变量设置。
+
 ![codeMagic env team](codeMagic_env_team.png).
 
 
@@ -76,7 +82,7 @@ scripts:
     script: flutter build ios
 ```
 
- Android和iOS build 配置参考 https://docs.codemagic.io/yaml-quick-start/building-a-flutter-app/
+ Android和iOS build 配置参考 https://docs.codemagic.io/yaml-quick-start/building-a-flutter-app/ ，在script块中，我们可以像正常写shell脚本一样，定义变量、流程控制等。
 
 ### 版本号自增
 CodeMagic提供了Android和iOS的CLI来帮助我们通过命令行来与googlePlay 和Apple Store交互。项目地址： https://github.com/codemagic-ci-cd/cli-tools
