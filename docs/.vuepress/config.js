@@ -22,7 +22,6 @@ module.exports = {
         title: 'Flutter',   // 必要的
         path: '/Flutter/',
         children: [
-          '/Flutter/layout.md',
           '/Flutter/provider.md',
           '/Flutter/sliver.md',
           {
@@ -30,6 +29,12 @@ module.exports = {
             path: '/Flutter/build',
             children: [
               '/Flutter/build/library_builder.md',
+            ]
+          },
+          {
+            title: 'layout',   // 必要的
+            children: [
+              '/Flutter/layout/layout.md',
             ]
           },
           {
