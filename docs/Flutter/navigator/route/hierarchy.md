@@ -1,4 +1,4 @@
-# 类型系统
+# Route类型系统
 
 ## Route
 所有route的基类，规定了最基础的能力:
@@ -86,7 +86,17 @@ abstract class TransitionRoute<T> extends OverlayRoute<T> {
 
 具有阻断前一个route交互的能力，如何阻断目前不清楚。直接子类：PageRoute，PopupRoute。
 
-ModalBarrier用于处理背景点击。
+ModalRoute中提供了两个Widgets接口：buildPage、buildTransitions，这两个接口会在_ModalScope中使用来构建页面。那么关联路径如下：
+
+    buildPage、buildTransitions => 
+    _ModalScope => 
+    _buildModalScope => 
+    OverlayEntry => 
+    createOverlayEntries => 
+    _overlayEntries => 
+    Overlay(in Navigator)
+
+_buildModalBarrier方法用于构建背景页面，也就是屏障，会阻断底层Route的页面交互。
 
 ```dart
 abstract class ModalRoute<T> extends TransitionRoute<T> with LocalHistoryRoute<T>{
@@ -110,107 +120,34 @@ abstract class ModalRoute<T> extends TransitionRoute<T> with LocalHistoryRoute<T
     ProxyAnimation? _secondaryAnimationProxy;
 
     bool get barrierDismissible;
-    
-}
 
-```
+    @override
+  Iterable<OverlayEntry> createOverlayEntries() {
+    return <OverlayEntry>[
+      _modalBarrier = OverlayEntry(builder: _buildModalBarrier),
+      _modalScope = OverlayEntry(builder: _buildModalScope, maintainState: maintainState),
+    ];
+  }
 
-### 缓存
-
-_ModalScope 和 _ModalScopeStatus。
-
-
-_ModalScope是一个StatefulWidget，在State的build中会使用到ModalRoute的buildPage和buildTransitions来构建Builder和AnimatedBuilder。所以动画最终是在_ModalScope来组装的。但是为啥继承关系中把这个能力放在了TransitionRoute？
-
-```dart
-class _ModalScopeState<T> extends State<_ModalScope<T>> {
-      @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: widget.route.restorationScopeId,
-      builder: (BuildContext context, Widget? child) {
-        assert(child != null);
-        return RestorationScope(
-          restorationId: widget.route.restorationScopeId.value,
-          child: child!,
-        );
-      },
-      child: _ModalScopeStatus(
-        route: widget.route,
-        isCurrent: widget.route.isCurrent, // _routeSetState is called if this updates
-        canPop: widget.route.canPop, // _routeSetState is called if this updates
-        child: Offstage(
-          offstage: widget.route.offstage, // _routeSetState is called if this updates
-          child: PageStorage(
-            bucket: widget.route._storageBucket, // immutable
-            child: Builder(
-              builder: (BuildContext context) {
-                return Actions(
-                  actions: <Type, Action<Intent>>{
-                    DismissIntent: _DismissModalAction(context),
-                  },
-                  child: PrimaryScrollController(
-                    controller: primaryScrollController,
-                    child: FocusScope(
-                      node: focusScopeNode, // immutable
-                      child: FocusTrap(
-                        focusScopeNode: focusScopeNode,
-                        child: RepaintBoundary(
-                          child: AnimatedBuilder(
-                            animation: _listenable, // immutable
-                            builder: (BuildContext context, Widget? child) {
-                              return widget.route.buildTransitions(
-                                context,
-                                widget.route.animation!,
-                                widget.route.secondaryAnimation!,
-                                // This additional AnimatedBuilder is include because if the
-                                // value of the userGestureInProgressNotifier changes, it's
-                                // only necessary to rebuild the IgnorePointer widget and set
-                                // the focus node's ability to focus.
-                                AnimatedBuilder(
-                                  animation: widget.route.navigator?.userGestureInProgressNotifier ?? ValueNotifier<bool>(false),
-                                  builder: (BuildContext context, Widget? child) {
-                                    final bool ignoreEvents = _shouldIgnoreFocusRequest;
-                                    focusScopeNode.canRequestFocus = !ignoreEvents;
-                                    return IgnorePointer(
-                                      ignoring: ignoreEvents,
-                                      child: child,
-                                    );
-                                  },
-                                  child: child,
-                                ),
-                              );
-                            },
-                            child: _page ??= RepaintBoundary(
-                              key: widget.route._subtreeKey, // immutable
-                              child: Builder(
-                                builder: (BuildContext context) {
-                                  return widget.route.buildPage(
-                                    context,
-                                    widget.route.animation!,
-                                    widget.route.secondaryAnimation!,
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-        ),
+  Widget _buildModalScope(BuildContext context) {
+    // To be sorted before the _modalBarrier.
+    return _modalScopeCache ??= Semantics(
+      sortKey: const OrdinalSortKey(0.0),
+      child: _ModalScope<T>(
+        key: _scopeKey,
+        route: this,
+        // _ModalScope calls buildTransitions() and buildChild(), defined above
       ),
     );
   }
 
+  Widget _buildModalBarrier(BuildContext context) {
+    ...
+  }
+    
 }
-```
 
-_ModalScopeStatus是一个InheritedWidget，提供和缓存更新相关的能力。
+```
 
 
 ## PageRoute 与 PopupRoute
