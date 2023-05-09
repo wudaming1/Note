@@ -68,6 +68,7 @@ class _ModalScopeState<T> extends State<_ModalScope<T>> {
                               key: widget.route._subtreeKey, // immutable
                               child: Builder(
                                 builder: (BuildContext context) {
+                                  ///最终显示的界面
                                   return widget.route.buildPage(
                                     context,
                                     widget.route.animation!,
@@ -92,6 +93,8 @@ class _ModalScopeState<T> extends State<_ModalScope<T>> {
 
 }
 ```
+
+最终显示的页面由route.buildPage函数决定。
 
 _ModalScopeStatus是一个InheritedWidget，提供和缓存更新相关的能力。
 

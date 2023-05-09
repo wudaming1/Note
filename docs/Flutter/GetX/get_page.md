@@ -1,1 +1,2 @@
 # GetPage
+GetPage实际上是RouteSettings。每次通过`Get.toNamed()`推入一个页面，都会先生成一个RouteSettings，然后在GetMaterialApp的onGenerateRoute中匹配到对应的GetPage，并
