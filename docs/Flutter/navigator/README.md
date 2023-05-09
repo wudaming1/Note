@@ -1,2 +1,2 @@
 # 介绍
-Navigator是Flutter用于管理页面的Widget。
+Navigator是Flutter用于管理页面的Widget。使用Stage组件来管理页面，Stage类似于Stack，但是会不build看不见的组件。
