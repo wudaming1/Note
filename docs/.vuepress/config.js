@@ -38,6 +38,12 @@ module.exports = {
             ]
           },
           {
+            title: '核心Widget',
+            children: [
+              '/Flutter/core_widget/ParentData.md',
+            ]
+          },
+          {
             title: 'widgets',   // 必要的
             children: [
               '/Flutter/widgets/InheritedWidget/InheritedWidget.md',
@@ -58,6 +64,14 @@ module.exports = {
                   '/Flutter/navigator/route/widgets.md',
                 ]
               },
+            ]
+          },
+          {
+            title: 'GetX',   // 必要的
+            path: '/Flutter/GetX',
+            children: [
+              '/Flutter/GetX/match.md',
+              '/Flutter/GetX/get_page.md',
             ]
           },
         ]
