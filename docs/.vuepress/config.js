@@ -29,6 +29,7 @@ module.exports = {
             path: '/Flutter/build',
             children: [
               '/Flutter/build/library_builder.md',
+              '/Flutter/build/life_cycle.md',
             ]
           },
           {
