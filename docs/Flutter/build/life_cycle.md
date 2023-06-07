@@ -37,3 +37,18 @@ Element.update()=>DidUpdateWidget;
 8. Dispose： 当Element被永久移除是触发。
 
 ![State Lifecycle](./State_Lifecycle.png)
+
+
+## RenderObject生命周期
+
+
+
+Element.mount() => createRenderObject
+
+Element.mount() => attachRenderObject
+
+1. create
+2. layout
+3. paint
+4. repaint
+5. destory

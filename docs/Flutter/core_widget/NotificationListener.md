@@ -1,0 +1,8 @@
+# NotificationListener
+一个监听Notification在树中冒泡的Widget。事件由用户主动触发。具体参考[youtube](https://www.youtube.com/watch?v=cAnFbFoGM50)
+
+在Element中会把所以得NotificationListener以_NotificationNode的形式保存到_notificationTree属性中。由_NotificationNode负责在NotificationListener上冒泡。
+
+在Element的active阶段通过attachNotificationTree维护这个树。
+
+_NotificationNode实际上并不是树，是一个责任链。

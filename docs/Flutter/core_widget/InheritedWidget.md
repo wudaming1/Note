@@ -1,4 +1,4 @@
-# 组件状态共享
+# InheriedWidget
 在Flutter的框架中，使用InheritedWidget来实现Widget之间的信息共享。InheritedWidget被描述为在树中高效向下传递信息的Widget基类。使用InheritedWidget我们能够实现：
 1. 为子组件提供数据共享。
 2. 为子组件提供响应式更新。

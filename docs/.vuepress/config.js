@@ -41,15 +41,12 @@ module.exports = {
           {
             title: '核心Widget',
             children: [
+              '/Flutter/core_widget/ProxyWidget.md',
               '/Flutter/core_widget/ParentData.md',
+              '/Flutter/core_widget/NotificationListener.md',
+              '/Flutter/core_widget/InheritedWidget.md'
             ]
           },
-          {
-            title: 'widgets',   // 必要的
-            children: [
-              '/Flutter/widgets/InheritedWidget/InheritedWidget.md',
-            ]
-          }, 
           {
             title: 'navigator',   // 必要的
             path: '/Flutter/navigator',
