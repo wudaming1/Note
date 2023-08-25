@@ -37,7 +37,7 @@ ParentDataElemnet：用于在ParentDataWidget和RenderObject之间传递ParentDa
 
 从Element的update方法介入流程：
 
-    update:改变这个Element所使用的Widget，当Parent希望使用新的Widget来配置这个元素时，framework会调用这个方法。
+  update:改变这个Element所使用的Widget，当Parent希望使用新的Widget来配置这个元素时，framework会调用这个方法。
 
 切入点在ProxyElement， ProxyElement是ParentDataElement的父类。
 
