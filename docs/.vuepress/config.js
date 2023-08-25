@@ -151,7 +151,6 @@ module.exports = {
               '/Web/Vue/createElement.md',
               '/Web/Vue/Vue_class.md',
               '/Web/Vue/Vue_object.md',
-              '/Web/Vue/Router/introduce.md',
               '/Web/Vue/Router/register.md',
               '/Web/Vue/Router/router.md',
             ]
