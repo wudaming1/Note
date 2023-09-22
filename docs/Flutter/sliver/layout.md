@@ -68,7 +68,7 @@ class SliverGeometry {
     /// 当前Sliver可见部分的起点到下一个Sliver可见部分的起点的距离。
     final double layoutExtent;
 
-    /// 一般为0，特殊情况下用于计算Viewport的大小。
+    /// 一般为paintExtent，特殊情况下用于计算Viewport的大小。
     final double maxPaintExtent;
 
     /// 当Sliver可以收缩时，最大收缩范围。一般slive是pinned或者float。

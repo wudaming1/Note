@@ -23,7 +23,15 @@ module.exports = {
         path: '/Flutter/',
         children: [
           '/Flutter/provider.md',
-          '/Flutter/sliver.md',
+          {
+            title: 'sliver',
+            children: [
+              '/Flutter/sliver/layout.md',
+              '/Flutter/sliver/scrollable.md',
+              '/Flutter/sliver/viewport.md',
+              '/Flutter/sliver/widget.md',
+            ]
+          },
           {
             title: 'build',   // 必要的
             path: '/Flutter/build',
