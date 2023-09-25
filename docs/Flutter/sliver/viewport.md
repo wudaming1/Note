@@ -186,14 +186,14 @@ ViewPort 渲染对象
 
 ```
 RenderViewport {
-	/// layout驱动，携带偏移信息。
-	ViewportOffset _offset;
+    /// layout驱动，携带偏移信息。
+    ViewportOffset _offset;
 
-	/// SliverConstraints.axisDirection
-	AxisDirection _axisDirection;
+    /// SliverConstraints.axisDirection
+    AxisDirection _axisDirection;
 
 
-	double _cacheExtent;
+    double _cacheExtent;
 
 
 
