@@ -22,7 +22,7 @@ class SliverConstraints extends Constraints {
     /// 当前Sliver顶部（scrollExtent的起点）滑出Viewport起点的距离
     final double scrollOffset;
 
-    /// 当前Sliver之前的Sliver占据的scroll总高度，因为列表是懒加载，如果不能预估时，该值为double.infinity
+    /// 当前Sliver之前的Sliver占据的scroll总高度，如果不能预估时，该值为double.infinity
     final double precedingScrollExtent;
 
     /// 上一个 sliver 覆盖当前 sliver 的大小，通常在 sliver 是 pinned/floating

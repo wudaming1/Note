@@ -173,12 +173,18 @@ double layoutChildSequence({
   }
 ```
 
+
+
 使用 child 的 SliverGeometry 更新的属性有：
 
 1.  child 的 ParentData 的 paintOffset：在@1 处，根据局部变量 layoutOffset 和自身绘制偏移。
 2.  layoutOffset：在@2 处，累加`layoutExtent` 。
 3.  maxPaintOffset：在@3 处，累加`paintExtent`。会附加一些逻辑。
 4.  precedingScrollExtent：在@4 处，累加`scrollExtent`。
+5.  overlap：maxPaintOffset - layoutOffset，当 layoutExtent 和 paintExtent 不一致时，不为 0。
+
+
+![](./sliver_constraints.png)
 
 ## RenderViewport
 
