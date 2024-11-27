@@ -10,6 +10,12 @@ module.exports = {
         ]
       },
       {
+        title: 'iOS',   // 必要的
+        children: [
+          '/iOS/version_distribtion.md',
+        ]
+      },
+      {
         title: 'Dart',   // 必要的
         children: [
           '/Dart/extension.md',

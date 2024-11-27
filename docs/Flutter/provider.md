@@ -1,12 +1,13 @@
 # Provider
-一个Flutter官方团队提供的状态管理库。主要功能是在某个节点为所有子节点提供状态共享和状态更新。为我们提供更丰富、更方便的使用Inherited机制的方式。
+
+一个 Flutter 官方团队提供的状态管理库。主要功能是在某个节点为所有子节点提供状态共享和状态更新。为我们提供更丰富、更方便的使用 Inherited 机制的方式。
 
 ## 简单使用
 
-* Provider：数据提供者。Provider的实际类型很多，功能上有两大类：不变值和可变值。可变值改变是会通知Provider以及所有子节点rebuild。所以要注意Provider的位置以保证页面流畅度。
-* Consumer：数据消费者。本身没有什么逻辑，仅提供一个`context.watch`的封装。
+- Provider：数据提供者。Provider 的实际类型很多，功能上有两大类：不变值和可变值。可变值改变是会通知 Provider 以及所有子节点 rebuild。所以要注意 Provider 的位置以保证页面流畅度。
+- Consumer：数据消费者。本身没有什么逻辑，仅提供一个`context.watch`的封装。
 
-来个最简单的🌰
+来个最简单的 🌰
 
 ```
   @override
@@ -22,10 +23,8 @@
 ## 流程分析
 
 ### 普通状态
-以Provider为🌰
 
-继承关系
-![继承关系](./provider.png)
+以 Provider 为 🌰
 
 InteritedProvider
 
@@ -71,15 +70,14 @@ InheritedProvider({
           : child!,
     );
   }
-
 ```
-Provider并不是InteritedWidge的子类，而是一个SingleChildStatelessWidget，所有我们得看`buildWithChild`方法，进入_InheritedProviderScope。
 
-继承关系
-![继承关系](./_InheritedProviderScope.png)
-从这里可以看到_InheritedProviderScope是InteritedWidget。我们这是就能预知后面查找Element是用的就是_InheritedProviderScope。这个类本身并没有啥逻辑，直接来_InheritedProviderScopeElement。依据Interited的设计，_InheritedProviderScopeElement必然是InheritedElement的子类。
+Provider 并不是 InteritedWidge 的子类，而是一个 SingleChildStatelessWidget，所有我们得看`buildWithChild`方法，进入\_InheritedProviderScope。
 
-_InheritedProviderScopeElement
+从这里可以看到\_InheritedProviderScope 是 InteritedWidget。我们这是就能预知后面查找 Element 是用的就是\_InheritedProviderScope。这个类本身并没有啥逻辑，直接来\_InheritedProviderScopeElement。依据 Interited 的设计，\_InheritedProviderScopeElement 必然是 InheritedElement 的子类。
+
+\_InheritedProviderScopeElement
+
 ```
   @override
   bool get hasValue => _delegateState.hasValue;
@@ -103,13 +101,14 @@ _InheritedProviderScopeElement
     super.performRebuild();
   }
 ```
-在这里preformRebuild做了两件事：
-1. 实例化了_delegateState。
-2. 将自身的引用给_delegateState。
-到这里并没有生产我们需要的值，也就是说没有使用我们传递给Provider的create的那个函数对象。Provider树的生成部分就结束了，下面考虑子树的生成过程。
 
+在这里 preformRebuild 做了两件事：
 
-Consumer：本身是SingleChildStatelessWidget，很简单。
+1.  实例化了\_delegateState。
+2.  将自身的引用给\_delegateState。  
+    到这里并没有生产我们需要的值，也就是说没有使用我们传递给 Provider 的 create 的那个函数对象。Provider 树的生成部分就结束了，下面考虑子树的生成过程。
+
+Consumer：本身是 SingleChildStatelessWidget，很简单。
 
 ```
   @override
@@ -126,7 +125,7 @@ Consumer：本身是SingleChildStatelessWidget，很简单。
 
 ```
   static T of<T>(BuildContext context, {bool listen = true}) {
-  
+
     final inheritedElement = _inheritedElementOf<T>(context);
 
     if (listen) {
@@ -163,7 +162,7 @@ Consumer：本身是SingleChildStatelessWidget，很简单。
   }
 ```
 
-`inheritedElement.value` => `_InheritedProviderScopeElement:_delegateState.value`=>`_DelegateState:T get value;`如果以Provider的默认构造方法为例的话就是`_CreateInheritedProviderState:`
+`inheritedElement.value` => `_InheritedProviderScopeElement:_delegateState.value`\=>`_DelegateState:T get value;`如果以 Provider 的默认构造方法为例的话就是`_CreateInheritedProviderState:`
 
 ```
 @override
@@ -183,7 +182,7 @@ Consumer：本身是SingleChildStatelessWidget，很简单。
         try {
           _value = delegate.create!(element!);//这里调用我们传入的方法对象，官方文档的懒加载就体现在这里。值在用到的时候才初始化。
         } finally {
-          
+
         }
       }
       if (delegate.update != null) {
@@ -199,15 +198,17 @@ Consumer：本身是SingleChildStatelessWidget，很简单。
   }
 ```
 
-到这里整个Provider流程就结束了。
+到这里整个 Provider 流程就结束了。
 
-以为完了吗？？？
+以为完了吗？？？  
 ![](../imgs/too_young_too_simple.jpeg)
 
 ## ListenableProvider
-一个完美的响应式，当数据改变，界面随即改变，不需要额外操作。这里以ListenableProvider为例分析，其他如ChangeNotifierProvider、FutureProvider、StreamProvider、ValueListenableProvider原理类似。
 
-ListenableProvider 
+一个完美的响应式，当数据改变，界面随即改变，不需要额外操作。这里以 ListenableProvider 为例分析，其他如 ChangeNotifierProvider、FutureProvider、StreamProvider、ValueListenableProvider 原理类似。
+
+ListenableProvider
+
 ```
 //构造方法多个一个东西_startListening。
   ListenableProvider({
@@ -237,7 +238,8 @@ ListenableProvider
   }
 ```
 
-往回看，在_CreateInheritedProviderState的value get中，会调用_startListening这个方法。下面看看markNeedsNotifyDependents是什么，还是往回倒InheritedProviderScopeElement的代码中，markNeedsNotifyDependents()=》markNeedsBuild(),系统方法，标记下帧重绘。那么响应式的到此结束。Future和Stream的类似，只不过不是回调方式不一样。
+往回看，在\_CreateInheritedProviderState 的 value get 中，会调用\_startListening 这个方法。下面看看 markNeedsNotifyDependents 是什么，还是往回倒 InheritedProviderScopeElement 的代码中，markNeedsNotifyDependents()=》markNeedsBuild(),系统方法，标记下帧重绘。那么响应式的到此结束。Future 和 Stream 的类似，只不过不是回调方式不一样。
 
 ## ProxyProvider
-在前面_CreateInheritedProviderState代码value获取的流程可以发现，一块重要的逻辑是delegate.update，这个属性一直没有赋值。这个值在ProxyProvider会被赋值。流程上依附于签名的流程就很简单了。主要说明下ProxyProvider的设计目的，当一个Provider的值依赖于另一个Provider时，使用ProxyProvider可以方便的做到页面更新(也不是很懂！)。
+
+在前面\_CreateInheritedProviderState 代码 value 获取的流程可以发现，一块重要的逻辑是 delegate.update，这个属性一直没有赋值。这个值在 ProxyProvider 会被赋值。流程上依附于签名的流程就很简单了。主要说明下 ProxyProvider 的设计目的，当一个 Provider 的值依赖于另一个 Provider 时，使用 ProxyProvider 可以方便的做到页面更新(也不是很懂！)。
