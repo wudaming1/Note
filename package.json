@@ -1,7 +1,6 @@
 {
   "name": "work-note",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev docs",
@@ -11,5 +10,13 @@
   "license": "ISC",
   "devDependencies": {
     "vuepress": "^1.9.10"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "description": "",
+  "dependencies": {
+    "vue-template-compiler": "^2.7.16",
+    "watchman": "^1.0.0"
   }
 }
