@@ -28,6 +28,7 @@ module.exports = {
         title: 'Flutter',   // 必要的
         path: '/Flutter/',
         children: [
+          '/Flutter/config.md',
           '/Flutter/provider.md',
           {
             title: 'sliver',
